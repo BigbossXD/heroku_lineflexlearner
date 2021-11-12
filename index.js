@@ -149,10 +149,6 @@ const ReplyMSG = (ReplyToken, message) => {
             }
           ]
         },
-        "hero": {
-          "type": "image",
-          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png"
-        },
         "body": {
           "type": "box",
           "layout": "vertical",
