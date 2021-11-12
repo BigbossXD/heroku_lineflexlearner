@@ -56,7 +56,7 @@ app.get("/LineWebhook", (req, res) => {
 app.post("/LineWebhook", (req, res) => {
 //   req.body.events; // webhook event objects
 //   req.body.destination; // user ID of the bot (optional)
-
+console.log(JSON.stringify(req.body, null, 2));
   let reply_token = req.body.events[0].replyToken;
   let msg = req.body.events[0].message.text;
 
