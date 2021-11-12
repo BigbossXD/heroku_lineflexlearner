@@ -6,6 +6,38 @@ const cors = require("cors");
 
 var port = process.env.PORT || 5000;
 
+//Log Write
+const { createLogger, format, transports } = require("winston");
+const fs = require("fs");
+const logDir = "./log";
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir);
+}
+const filename = path.join(logDir, "line_webhook.log");
+const logger = createLogger({
+  // change level if in dev environment versus production
+  level: "info",
+  format: format.combine(
+    format.timestamp({
+      format: "YYYY-MM-DD HH:mm:ss",
+    }),
+    format.printf((info) => `${info.timestamp} ${info.level}: ${info.message}`)
+  ),
+  transports: [
+    new transports.Console({
+      level: "info",
+      format: format.combine(
+        format.colorize(),
+        format.printf(
+          (info) => `${info.timestamp} ${info.level}: ${info.message}`
+        )
+      ),
+    }),
+    new transports.File({ filename }),
+  ],
+});
+//Log Write
+
 const config = {
   channelAccessToken:
     "5jrExr1uaAjIpIG64umLo2QFxJ9NXGAGt5vmcQUDD4It9dj5Ye8zK3GU2eAp/wIjEhNMFa83t6v40qL/Ohrcn5RaCCU1bCvddxzohGA7i0PfqrLh/ujOoaCG1ZYl2J0f+OLOcY3e/L5zd/5ZafEUPQdB04t89/1O/w1cDnyilFU=",
@@ -33,6 +65,7 @@ app.post("/LineWebhook", (req, res) => {
     };
     ReplyMSG(reply_token, message);
     logger.info("ReplyMSG Msg Outgoing . . . ");
+    res.status(200).send("EVENT_RECEIVED");
   }
 
   logger.info("Webhook End!!");
