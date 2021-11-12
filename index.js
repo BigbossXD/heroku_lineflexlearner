@@ -324,52 +324,56 @@ const ReplyFlex2 = (ReplyToken) => {
 ReplyFlex_Flex_Bubble = (ReplyToken) => {
   logger.info("This in ReplyMSG Function . . .");
   const message = {
-    type: "bubble",
-    direction: "ltr",
-    header: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: "This easy bubble",
-          align: "center",
-          contents: [],
-        },
-      ],
-    },
-    hero: {
-      type: "image",
-      url: "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
-      size: "full",
-      aspectRatio: "1.51:1",
-      aspectMode: "fit",
-    },
-    body: {
-      type: "box",
-      layout: "vertical",
-      contents: [
-        {
-          type: "text",
-          text: "Body",
-          align: "center",
-          contents: [],
-        },
-      ],
-    },
-    footer: {
-      type: "box",
-      layout: "horizontal",
-      contents: [
-        {
-          type: "button",
-          action: {
-            type: "uri",
-            label: "Button",
-            uri: "https://linecorp.com",
+    type: "flex",
+    altText: "Ez bubble",
+    contents: {
+      type: "bubble",
+      direction: "ltr",
+      header: {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "text",
+            text: "This easy bubble",
+            align: "center",
+            contents: [],
           },
-        },
-      ],
+        ],
+      },
+      hero: {
+        type: "image",
+        url: "https://vos.line-scdn.net/bot-designer-template-images/bot-designer-icon.png",
+        size: "full",
+        aspectRatio: "1.51:1",
+        aspectMode: "fit",
+      },
+      body: {
+        type: "box",
+        layout: "vertical",
+        contents: [
+          {
+            type: "text",
+            text: "Body",
+            align: "center",
+            contents: [],
+          },
+        ],
+      },
+      footer: {
+        type: "box",
+        layout: "horizontal",
+        contents: [
+          {
+            type: "button",
+            action: {
+              type: "uri",
+              label: "Button",
+              uri: "https://linecorp.com",
+            },
+          },
+        ],
+      },
     },
   };
   client
