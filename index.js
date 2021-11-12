@@ -1,0 +1,64 @@
+port = 4822;
+const express = require("express");
+const middleware = require("@line/bot-sdk").middleware;
+const line = require("@line/bot-sdk");
+const app = express();
+const cors = require("cors");
+
+const config = {
+  channelAccessToken:
+    "5jrExr1uaAjIpIG64umLo2QFxJ9NXGAGt5vmcQUDD4It9dj5Ye8zK3GU2eAp/wIjEhNMFa83t6v40qL/Ohrcn5RaCCU1bCvddxzohGA7i0PfqrLh/ujOoaCG1ZYl2J0f+OLOcY3e/L5zd/5ZafEUPQdB04t89/1O/w1cDnyilFU=",
+};
+
+
+app.post("/LineWebhook", (req, res) => {
+  req.body.events; // webhook event objects
+  req.body.destination; // user ID of the bot (optional)
+
+  let reply_token = req.body.events[0].replyToken;
+  let msg = req.body.events[0].message.text;
+
+  if (msg == "ทดสอบ") {
+    const message = {
+      type: "text",
+      text: "Hello World!",
+    };
+    ReplyMSG(reply_token, message);
+    logger.info("ReplyMSG Msg Outgoing . . . ");
+  }
+
+  logger.info("Webhook End!!");
+  const resp = {
+    Message: "Update Order Success",
+    code: "00000",
+    OrderCode: OrderCode,
+  };
+  res.status(200).json(resp);
+});
+
+const ReplyMSG = (ReplyToken, message) => {
+    logger.info("This in ReplyMSG Function . . .");
+    client
+      .replyMessage(ReplyToken, message)
+      .then(() => {
+        logger.info("Reply Completed!!!");
+      })
+      .catch((err) => {
+        logger.info(err);
+      });
+  };
+  
+  const PushMSG = (to, message) => {
+    logger.info("This in PushMSG Function . . .");
+  client.pushMessage(to, message)
+    .then(() => {
+      logger.info("PushMSG Completed!!!");
+    })
+    .catch((err) => {
+      logger.info(err);
+    });
+  }
+  
+app.listen(port, () => {
+  console.log("server listen on port", port);
+});
