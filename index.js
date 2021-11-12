@@ -11,7 +11,7 @@ const config = {
     "5jrExr1uaAjIpIG64umLo2QFxJ9NXGAGt5vmcQUDD4It9dj5Ye8zK3GU2eAp/wIjEhNMFa83t6v40qL/Ohrcn5RaCCU1bCvddxzohGA7i0PfqrLh/ujOoaCG1ZYl2J0f+OLOcY3e/L5zd/5ZafEUPQdB04t89/1O/w1cDnyilFU=",
 };
 
-app.get("/", (req, res) => {
+app.get("/LineWebhook", (req, res) => {
     const resp = {
         Message: "Update Order Success",
         code: "00000",
