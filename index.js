@@ -84,6 +84,11 @@ console.log(JSON.stringify(req.body, null, 2));
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
   }
+  if (msg == "Flex_Bubble") {
+    await ReplyFlex_Flex_Bubble(reply_token);
+    logger.info("ReplyMSG Msg Outgoing . . . ");
+    res.status(200).send("EVENT_RECEIVED");
+  }
 
   logger.info("Webhook End!!");
   res.status(200).send("EVENT_RECEIVED "+JSON.stringify(req.body));
@@ -317,17 +322,63 @@ const ReplyMSG = (ReplyToken, message) => {
         logger.info(err);
       });
   };
-  
-  const PushMSG = (to, message) => {
-    logger.info("This in PushMSG Function . . .");
-  client.pushMessage(to, message)
-    .then(() => {
-      logger.info("PushMSG Completed!!!");
-    })
-    .catch((err) => {
-      logger.info(err);
-    });
-  }
+
+  ReplyFlex_Flex_Bubble = (ReplyToken) => {
+    logger.info("This in ReplyMSG Function . . .");
+    const message = {
+        "type": "bubble",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "header"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://www.linefriends.com/img/img_sec.jpg",
+          "size": "full",
+          "aspectRatio": "2:1"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "body"
+            },
+            {
+              "type": "text",
+              "text": "body"
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "footer"
+            }
+          ]
+        }
+      };
+    client
+      .replyMessage(ReplyToken, message)
+      .then(() => {
+        logger.info("Reply Completed!!!");
+      })
+      .catch((err) => {
+        logger.info(err);
+      });
+  };
+
+
 
 app.listen(port, () => {
   console.log("server listen on port", port);
