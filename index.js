@@ -79,6 +79,11 @@ console.log(JSON.stringify(req.body, null, 2));
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
   }
+  if (msg == "flex2") {
+    ReplyFlex2(reply_token);
+    logger.info("ReplyMSG Msg Outgoing . . . ");
+    res.status(200).send("EVENT_RECEIVED");
+  }
 
   logger.info("Webhook End!!");
   res.status(200).send("EVENT_RECEIVED "+JSON.stringify(req.body));
@@ -117,6 +122,59 @@ const ReplyMSG = (ReplyToken, message) => {
               }
             ]
           }
+        }
+      };
+    client
+      .replyMessage(ReplyToken, message)
+      .then(() => {
+        logger.info("Reply Completed!!!");
+      })
+      .catch((err) => {
+        logger.info(err);
+      });
+  };
+
+
+  const ReplyFlex2 = (ReplyToken) => {
+    logger.info("This in ReplyMSG Function . . .");
+    const message = {
+        "type": "bubble",
+        "header": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text this bubble",
+              "text": "Header text bubble"
+            }
+          ]
+        },
+        "hero": {
+          "type": "image",
+          "url": "https://picsum.photos/200"
+        },
+        "body": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Body text"
+            }
+          ]
+        },
+        "footer": {
+          "type": "box",
+          "layout": "vertical",
+          "contents": [
+            {
+              "type": "text",
+              "text": "Footer text"
+            }
+          ]
+        },
+        "styles": {
+          "comment": "See the example of a bubble style object"
         }
       };
     client
