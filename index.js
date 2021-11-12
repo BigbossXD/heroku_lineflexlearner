@@ -56,8 +56,8 @@ app.post("/LineWebhook", (req, res) => {
   req.body.events; // webhook event objects
   req.body.destination; // user ID of the bot (optional)
 
-  let reply_token = req.body.events[0].replyToken;
-  let msg = req.body.events[0].message.text;
+//   let reply_token = req.body.events[0].replyToken;
+//   let msg = req.body.events[0].message.text;
 
   if (msg == "ทดสอบ") {
     const message = {
@@ -70,12 +70,7 @@ app.post("/LineWebhook", (req, res) => {
   }
 
   logger.info("Webhook End!!");
-  const resp = {
-    Message: "Update Order Success",
-    code: "00000",
-    OrderCode: OrderCode,
-  };
-  res.status(200).json(resp);
+  res.status(200).send("EVENT_RECEIVED");
 });
 
 const ReplyMSG = (ReplyToken, message) => {
