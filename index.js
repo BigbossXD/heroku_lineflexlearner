@@ -7,6 +7,9 @@ var path = require("path");
 var port = process.env.PORT || 5000;
 
 app.use(cors());
+app.use(express.static("./public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //Log Write
 const { createLogger, format, transports } = require("winston");
 const fs = require("fs");
@@ -55,7 +58,7 @@ app.get("/LineWebhook", (req, res) => {
 app.post("/LineWebhook", (req, res) => {
 //   req.body.events; // webhook event objects
 //   req.body.destination; // user ID of the bot (optional)
-console.log(req.body);
+ console.log(req.body);
 console.log(JSON.stringify(req.body));
 console.log(JSON.stringify(req.body, null, 2));
   let reply_token = req.body.events[0].replyToken;
@@ -72,7 +75,7 @@ console.log(JSON.stringify(req.body, null, 2));
   }
 
   logger.info("Webhook End!!");
-  res.status(200).send("EVENT_RECEIVED");
+  res.status(200).send("EVENT_RECEIVED "+JSON.stringify(req.body));
 });
 
 const ReplyMSG = (ReplyToken, message) => {
