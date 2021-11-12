@@ -7,6 +7,7 @@ var path = require("path");
 
 var port = process.env.PORT || 5000;
 
+app.use(cors());
 //Log Write
 const { createLogger, format, transports } = require("winston");
 const fs = require("fs");
