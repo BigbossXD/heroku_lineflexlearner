@@ -1,9 +1,10 @@
-port = 4822;
 const express = require("express");
 const middleware = require("@line/bot-sdk").middleware;
 const line = require("@line/bot-sdk");
 const app = express();
 const cors = require("cors"); 
+
+var port = process.env.PORT || 5000;
 
 const config = {
   channelAccessToken:
