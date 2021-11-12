@@ -172,9 +172,6 @@ const ReplyMSG = (ReplyToken, message) => {
               "text": "Footer text"
             }
           ]
-        },
-        "styles": {
-          "comment": "See the example of a bubble style object"
         }
       };
     client
