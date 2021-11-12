@@ -91,7 +91,6 @@ console.log(JSON.stringify(req.body, null, 2));
   }
 
   logger.info("Webhook End!!");
-  res.status(200).send("EVENT_RECEIVED "+JSON.stringify(req.body));
 });
 
 const ReplyMSG = (ReplyToken, message) => {
