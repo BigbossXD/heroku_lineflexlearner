@@ -55,7 +55,7 @@ app.get("/LineWebhook", (req, res) => {
       res.status(200).json(resp);
   });
 
-app.post("/LineWebhook", (req, res) => {
+app.post("/LineWebhook", async (req, res) => {
 //   req.body.events; // webhook event objects
 //   req.body.destination; // user ID of the bot (optional)
  console.log(req.body);
@@ -75,12 +75,12 @@ console.log(JSON.stringify(req.body, null, 2));
   }
 
   if (msg == "flex1") {
-    ReplyFlex1(reply_token);
+    await ReplyFlex1(reply_token);
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
   }
   if (msg == "flex2") {
-    ReplyFlex2(reply_token);
+    await ReplyFlex2(reply_token);
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
   }
