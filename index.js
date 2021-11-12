@@ -14,7 +14,6 @@ app.get("/", (req, res) => {
     const resp = {
         Message: "Update Order Success",
         code: "00000",
-        OrderCode: OrderCode,
       };
       res.status(200).json(resp);
   });
