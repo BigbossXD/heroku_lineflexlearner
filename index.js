@@ -56,18 +56,18 @@ app.post("/LineWebhook", (req, res) => {
 //   req.body.events; // webhook event objects
 //   req.body.destination; // user ID of the bot (optional)
 
-//   let reply_token = req.body.events[0].replyToken;
-//   let msg = req.body.events[0].message.text;
+  let reply_token = req.body.events[0].replyToken;
+  let msg = req.body.events[0].message.text;
 
-//   if (msg == "ทดสอบ") {
-//     const message = {
-//       type: "text",
-//       text: "Hello World!",
-//     };
-//     ReplyMSG(reply_token, message);
-//     logger.info("ReplyMSG Msg Outgoing . . . ");
-//     res.status(200).send("EVENT_RECEIVED");
-//   }
+  if (msg == "ทดสอบ") {
+    const message = {
+      type: "text",
+      text: "Hello World!",
+    };
+    ReplyMSG(reply_token, message);
+    logger.info("ReplyMSG Msg Outgoing . . . ");
+    res.status(200).send("EVENT_RECEIVED");
+  }
 
   logger.info("Webhook End!!");
   res.status(200).send("EVENT_RECEIVED");
