@@ -79,7 +79,7 @@ console.log(JSON.stringify(req.body, null, 2));
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
   }
-  if (msg == "flex2") {
+  if (msg == "flex") {
     await ReplyFlex2(reply_token);
     logger.info("ReplyMSG Msg Outgoing . . . ");
     res.status(200).send("EVENT_RECEIVED");
@@ -139,7 +139,7 @@ const ReplyMSG = (ReplyToken, message) => {
     logger.info("This in ReplyMSG Function . . .");
     const message = {
         "type": "flex",
-        "altText": "Q1. Which is the API to create chatbot?",
+        "altText": "Q1. อยากดู FLex แบบไหน?",
         "contents": {
           "type": "bubble",
           "body": {
@@ -160,7 +160,7 @@ const ReplyMSG = (ReplyToken, message) => {
                   },
                   {
                     "type": "text",
-                    "text": "Which is the API to create chatbot?",
+                    "text": "Q1. อยากดู FLex แบบไหน?",
                     "wrap": true,
                     "weight": "bold",
                     "margin": "lg"
@@ -189,7 +189,7 @@ const ReplyMSG = (ReplyToken, message) => {
                       },
                       {
                         "type": "text",
-                        "text": "Login API",
+                        "text": "Flex bubble",
                         "wrap": true,
                         "flex": 9
                       }
@@ -209,7 +209,7 @@ const ReplyMSG = (ReplyToken, message) => {
                       },
                       {
                         "type": "text",
-                        "text": "Messaging API",
+                        "text": "Carousel",
                         "wrap": true,
                         "flex": 9
                       }
@@ -229,7 +229,7 @@ const ReplyMSG = (ReplyToken, message) => {
                       },
                       {
                         "type": "text",
-                        "text": "Graph API",
+                        "text": "Component",
                         "wrap": true,
                         "flex": 9
                       }
@@ -249,7 +249,7 @@ const ReplyMSG = (ReplyToken, message) => {
                       },
                       {
                         "type": "text",
-                        "text": "Cartoon API",
+                        "text": "flex อื่นๆ",
                         "wrap": true,
                         "flex": 9
                       }
@@ -271,7 +271,7 @@ const ReplyMSG = (ReplyToken, message) => {
                 "action": {
                   "type": "message",
                   "label": "1",
-                  "text": "Login API"
+                  "text": "Flex_Bubble"
                 }
               },
               {
@@ -281,7 +281,7 @@ const ReplyMSG = (ReplyToken, message) => {
                 "action": {
                   "type": "message",
                   "label": "2",
-                  "text": "Messaging API"
+                  "text": "Flex_Carousel"
                 }
               },
               {
@@ -291,7 +291,7 @@ const ReplyMSG = (ReplyToken, message) => {
                 "action": {
                   "type": "message",
                   "label": "3",
-                  "text": "Graph API"
+                  "text": "Flex_Component"
                 }
               },
               {
@@ -301,7 +301,7 @@ const ReplyMSG = (ReplyToken, message) => {
                 "action": {
                   "type": "message",
                   "label": "4",
-                  "text": "Cartoon API"
+                  "text": "Flex_More"
                 }
               }
             ]
