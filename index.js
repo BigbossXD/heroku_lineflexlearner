@@ -3,6 +3,7 @@ const middleware = require("@line/bot-sdk").middleware;
 const line = require("@line/bot-sdk");
 const app = express();
 const cors = require("cors"); 
+var path = require("path");
 
 var port = process.env.PORT || 5000;
 
