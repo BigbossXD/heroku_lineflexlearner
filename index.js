@@ -327,33 +327,100 @@ const ReplyMSG = (ReplyToken, message) => {
     logger.info("This in ReplyMSG Function . . .");
     const message = {
         "type": "bubble",
-        "header": {
-          "type": "box",
-          "layout": "vertical",
-          "contents": [
-            {
-              "type": "text",
-              "text": "header"
-            }
-          ]
-        },
         "hero": {
           "type": "image",
-          "url": "https://www.linefriends.com/img/img_sec.jpg",
+          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
           "size": "full",
-          "aspectRatio": "2:1"
+          "aspectRatio": "20:13",
+          "aspectMode": "cover",
+          "action": {
+            "type": "uri",
+            "label": "Action",
+            "uri": "https://linecorp.com"
+          }
         },
         "body": {
           "type": "box",
           "layout": "vertical",
+          "spacing": "md",
+          "action": {
+            "type": "uri",
+            "label": "Action",
+            "uri": "https://linecorp.com"
+          },
           "contents": [
             {
               "type": "text",
-              "text": "body"
+              "text": "Brown's Burger",
+              "weight": "bold",
+              "size": "xl",
+              "contents": []
+            },
+            {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
+                    },
+                    {
+                      "type": "text",
+                      "text": "$10.5",
+                      "weight": "bold",
+                      "margin": "sm",
+                      "contents": []
+                    },
+                    {
+                      "type": "text",
+                      "text": "400kcl",
+                      "size": "sm",
+                      "color": "#AAAAAA",
+                      "align": "end",
+                      "contents": []
+                    }
+                  ]
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
+                    },
+                    {
+                      "type": "text",
+                      "text": "$15.5",
+                      "weight": "bold",
+                      "flex": 0,
+                      "margin": "sm",
+                      "contents": []
+                    },
+                    {
+                      "type": "text",
+                      "text": "550kcl",
+                      "size": "sm",
+                      "color": "#AAAAAA",
+                      "align": "end",
+                      "contents": []
+                    }
+                  ]
+                }
+              ]
             },
             {
               "type": "text",
-              "text": "body"
+              "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
+              "size": "xxs",
+              "color": "#AAAAAA",
+              "wrap": true,
+              "contents": []
             }
           ]
         },
@@ -362,8 +429,18 @@ const ReplyMSG = (ReplyToken, message) => {
           "layout": "vertical",
           "contents": [
             {
-              "type": "text",
-              "text": "footer"
+              "type": "spacer",
+              "size": "xxl"
+            },
+            {
+              "type": "button",
+              "action": {
+                "type": "uri",
+                "label": "Add to Cart",
+                "uri": "https://linecorp.com"
+              },
+              "color": "#905C44",
+              "style": "primary"
             }
           ]
         }
