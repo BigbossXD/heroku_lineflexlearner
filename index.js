@@ -10,6 +10,14 @@ const config = {
     "5jrExr1uaAjIpIG64umLo2QFxJ9NXGAGt5vmcQUDD4It9dj5Ye8zK3GU2eAp/wIjEhNMFa83t6v40qL/Ohrcn5RaCCU1bCvddxzohGA7i0PfqrLh/ujOoaCG1ZYl2J0f+OLOcY3e/L5zd/5ZafEUPQdB04t89/1O/w1cDnyilFU=",
 };
 
+app.get("/", (req, res) => {
+    const resp = {
+        Message: "Update Order Success",
+        code: "00000",
+        OrderCode: OrderCode,
+      };
+      res.status(200).json(resp);
+  });
 
 app.post("/LineWebhook", (req, res) => {
   req.body.events; // webhook event objects
@@ -58,7 +66,7 @@ const ReplyMSG = (ReplyToken, message) => {
       logger.info(err);
     });
   }
-  
+
 app.listen(port, () => {
   console.log("server listen on port", port);
 });
