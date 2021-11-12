@@ -3,7 +3,7 @@ const express = require("express");
 const middleware = require("@line/bot-sdk").middleware;
 const line = require("@line/bot-sdk");
 const app = express();
-const cors = require("cors");
+const cors = require("cors"); 
 
 const config = {
   channelAccessToken:
